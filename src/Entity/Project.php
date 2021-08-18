@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Cocur\Slugify\Slugify;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
@@ -19,7 +21,7 @@ class Project
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="datetime")
@@ -34,21 +36,51 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[assert\NotBlank(message: "Merci de renseigner un titre")]
+    #[assert\Length(
+        min: 4, 
+        max: 50, 
+        minMessage: "Merci de renseigner un titre de minimum {{ limit }} caractères",
+        maxMessage: "Merci de renseigner un titre de maximum {{ limit }} caractères")]
     private string $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text", length=500)
      */
+    #[assert\NotBlank(message: "Merci de renseigner une description")]
+    #[assert\Length(
+        min: 20, 
+        max: 500, 
+        minMessage: "Merci de renseigner une description de minimum {{ limit }} caractères",
+        maxMessage: "Merci de renseigner une description de maximum {{ limit }} caractères")]
     private string $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    #[assert\NotBlank(message: "Merci de renseigner une adresse web")]
+    #[Assert\Regex(
+        '#^https:[/]{2}[a-zA-Z0-9\-\s]+.menezes.be$#', 
+        message: "Merci de renseigner une adresse web de type 'https://*.menezes.be'")]
+    #[assert\Length(
+        min: 22, 
+        max: 80, 
+        minMessage: "Merci de renseigner une adresse web de minimum {{ limit }} caractères",
+        maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères")]
     private string $linkWeb;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    #[assert\NotBlank(message: "Merci de renseigner une adresse web")]
+    #[Assert\Regex(
+        '#^https:[/]{2}github.com[/]{1}curvata[/]{1}[a-zA-Z0-9\-\s]+$#', 
+        message: "Merci de renseigner une adresse web de type 'https://github.com/curvata/*'")]
+    #[assert\Length(
+        min: 22, 
+        max: 100, 
+        minMessage: "Merci de renseigner une adresse web de minimum {{ limit }} caractères",
+        maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères")]
     private string $linkGithub;
 
     /**
@@ -56,12 +88,22 @@ class Project
      */
     private string $headerImage;
 
+    #[Assert\Image(
+        mimeTypes: ["image/jpeg","image/png"],
+        mimeTypesMessage: "Uniquement les formats jpeg et png sont acceptés"
+    )]
     private File $headerImageFile;
 
     /**
      * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project")
      */
-    private $pictures;
+    private Collection $pictures;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    #[Assert\Regex('/^[a-zA-Z0-9\-\S]+$/', message: "Merci de renseigner un slug valide")]
+    private string $slug;
 
     public function __construct()
     {
@@ -193,6 +235,18 @@ class Project
                 $picture->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = (new Slugify())->slugify($slug);
 
         return $this;
     }
