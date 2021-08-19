@@ -3,25 +3,27 @@
 namespace App\Tests\Entity;
 
 use App\Entity\Project;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\ConstraintViolation;
+use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProjectEntityTest extends KernelTestCase
 {
-    public function getValidator()
+    public function getValidator(): ValidatorInterface
     {
         self::bootKernel();
         /** @var ValidatorInterface */
         return self::getContainer()->get('debug.validator');
     }
 
-    public function valid(Project $project)
+    public function valid(Project $project): ConstraintViolationList
     {
         return $this->getValidator()->validate($project);
     }
 
-    public function getString(int $length)
+    public function getString(int $length): string
     {
         $characters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
         $value = "";
@@ -33,11 +35,9 @@ class ProjectEntityTest extends KernelTestCase
         return $value;
     }
 
-    public function getProject()
+    public function getProject(): Project
     {
         return (new Project())
-            ->setCreatedAt((new DateTime()))
-            ->setUpdatedAt((new DateTime()))
             ->setSlug("mon projet")
             ->setTitle("Un titre")
             ->setDescription("Une description pour mon projet")
@@ -123,12 +123,33 @@ class ProjectEntityTest extends KernelTestCase
             "Merci de renseigner une adresse web de type 'https://github.com/curvata/*'", $this->valid($project)[0]->getMessage());
      }
 
-     public function testSlug(): void
+    public function testSlug(): void
     {
         $project = $this->getProject();
 
         $project->setSlug("mon superbe projet");
         $this->assertCount(0, $this->valid($project));
         $this->assertStringContainsString("mon-superbe-projet", $project->getSlug());
-     }
+    }
+
+    public function testFileHeaderValid()
+    {
+        $file = new File(dirname(__DIR__)."/FilesTest/test.jpg");
+
+        $project = $this->getProject();
+        $project->setHeaderImageFile($file);
+
+        $this->assertCount(0, $this->valid($project));
+    }
+
+    public function testFileHeaderNotValid(): void
+    {
+        $file = new File(dirname(__DIR__)."/FilesTest/test.pdf");
+
+        $project = $this->getProject();
+        $project->setHeaderImageFile($file);
+
+        $this->assertCount(1, $this->valid($project));
+        $this->assertStringContainsString("Uniquement les formats jpeg et png sont acceptés", $this->valid($project)[0]->getMessage());
+    }
 }

@@ -115,6 +115,12 @@ class Project
         return $this->headerImageFile;
     }
 
+    public function setHeaderImageFile(File $file): self
+    {
+        $this->headerImageFile = $file;
+        return $this;
+    }
+
     public function __toString(): string
     {
         return $this->title;
