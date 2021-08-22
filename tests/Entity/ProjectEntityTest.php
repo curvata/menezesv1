@@ -3,6 +3,7 @@
 namespace App\Tests\Entity;
 
 use App\Entity\Project;
+use App\Tests\Helper\GenerateText;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\ConstraintViolation;
@@ -11,28 +12,13 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProjectEntityTest extends KernelTestCase
 {
-    public function getValidator(): ValidatorInterface
+    use GenerateText;
+    
+    public function valid(mixed $project): ConstraintViolationList
     {
         self::bootKernel();
         /** @var ValidatorInterface */
-        return self::getContainer()->get('debug.validator');
-    }
-
-    public function valid(Project $project): ConstraintViolationList
-    {
-        return $this->getValidator()->validate($project);
-    }
-
-    public function getString(int $length): string
-    {
-        $characters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-        $value = "";
-
-        for ($a=0; $a <= $length; $a++) {
-            $value .= $characters[rand(0, count($characters) -1)];
-        }
-
-        return $value;
+        return self::getContainer()->get('debug.validator')->validate($project);
     }
 
     public function getProject(): Project
