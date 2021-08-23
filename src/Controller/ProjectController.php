@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/project')]
 class ProjectController extends AbstractController
 {
+    /**
+     * Index des projets
+     */
     #[Route('/', name: 'admin.project.index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
@@ -21,6 +24,9 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    /**
+     * Créer un projet
+     */
     #[Route('/new', name: 'admin.project.new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
@@ -42,6 +48,9 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    /**
+     * Visualiser un projet
+     */
     #[Route('/{id}', name: 'admin..project.show', methods: ['GET'])]
     public function show(Project $project): Response
     {
@@ -50,6 +59,9 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    /**
+     * Editer un projet
+     */
     #[Route('/edit/{id}', name: 'project.edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Project $project): Response
     {
@@ -68,6 +80,9 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    /**
+     * Supprimer un projet
+     */
     #[Route('/{id}', name: 'project.delete', methods: ['POST'])]
     public function delete(Request $request, Project $project): Response
     {
