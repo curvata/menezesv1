@@ -4,12 +4,36 @@
         <meta charset="UTF-8">
         <title>{% block title %}Portfolio Menezes{% endblock %}</title>
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
 
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <div class="container">
+        <header class="top">
+                <div class="logo">
+                    <img src="{{ asset('./images/logo.jpg') }}" alt="logo Menezes">
+                </div>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#realisations">Mes réalisations</a></li>
+                        <li><a href="#contact">Me contacter</a></li>
+                    </ul>
+                </nav>
+        </header>
+    </div>
+    {% block body %}{% endblock %}
+    <section class="contact">
+        <div class="container">
+            <h2>Me contacter</h2>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>Développé par <a href="https://menezes.be">Menezes</a></p>
+        </div>
+    </footer>
     </body>
 </html>

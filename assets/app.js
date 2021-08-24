@@ -1,5 +1,5 @@
 
-import './styles/app.css';
-import './styles/reset.css';
-import './styles/variables.css';
+import './styles/variables.scss';
+import './styles/app.scss';
+import './styles/reset.scss';
 

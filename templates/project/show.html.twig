@@ -1,54 +1,5 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Project{% endblock %}
-
+{% extends "../base.html.twig" %}
 {% block body %}
-    <h1>Project</h1>
+SHOW PROJECT FRONT
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ project.id }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ project.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ project.description }}</td>
-            </tr>
-            <tr>
-                <th>LinkWeb</th>
-                <td>{{ project.linkWeb }}</td>
-            </tr>
-            <tr>
-                <th>LinkGithub</th>
-                <td>{{ project.linkGithub }}</td>
-            </tr>
-            <tr>
-                <th>HeaderImage</th>
-                <td>{{ project.headerImage }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ project.slug }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('admin.project.index') }}">back to list</a>
-
-    <a href="{{ path('admin.project.edit', {'id': project.id}) }}">edit</a>
-
-    {{ include('project/_delete_form.html.twig') }}
 {% endblock %}

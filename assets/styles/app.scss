@@ -1,6 +1,6 @@
 body {
     background-color: white;
-    font-family: var(--font);
+    font-family: Skia;
     font-size: var(--size);
     display: flex;
     height: 100vh;
@@ -22,8 +22,99 @@ h3 { font-size: 1.4rem; }
 h4 { font-size: 1.2rem; }
 h5 { font-size: 0.8rem; }
 h6 { font-size: 0.5rem; }
-p { font-size: 1.2rem; font-weight: 300; }
+p { font-size: 1.2rem; font-weight: 300;}
 
 .container {
-    max-width: var(--container);
+    width: var(--container);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9;
+}
+
+.menu {
+    font-size: 1.2rem;
+    ul {
+        display: flex;
+
+        li {
+            margin: 1rem;
+        }
+    }
+}
+
+.logo {
+    margin: 1rem;
+    img {
+        max-width: 150px;
+    }
+}
+
+footer {
+    background-color: var(--black);
+    p {
+        color: white;
+        margin: 1rem 0;
+
+        a {
+            color: white;
+        }
+    }
+}
+
+.contact {
+    background-color: var(--grey);
+}
+
+.about {
+    background-color: var(--black);
+    color: white;
+    margin-top: 8rem;
+}
+
+.presentation_picture {
+    position: relative;
+    img {
+        position: absolute;
+        width: 450px;
+        right: 10%;
+        bottom: 0;
+    }
+}
+
+.hello {
+
+    h1 {
+        display: inline-block;
+        position: relative;
+        padding: 1rem;
+        background-color: rgba($color: rgb(233, 233, 233), $alpha: 0.5);
+        font-size: 2.5rem;
+        margin-left: 25%;
+        margin-top: 10%;
+        z-index: 10;
+    }
+}
+
+.text_me {
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    width: 45%;
+    text-align: right;
+    padding: 2rem;
+    font-size: 1.6rem;
+}
+
+.project {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }

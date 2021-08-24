@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Project;
 use App\Repository\ProjectRepository;
@@ -17,6 +17,6 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'admin.index', methods: ['GET'])]    
     public function index(): Response
     {
-        return $this->render('admin.html.twig');
+        return $this->render('admin/admin.html.twig');
     }
 }

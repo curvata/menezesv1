@@ -1,9 +1,14 @@
+@font-face {
+    font-family: 'Skia';
+    src: url('./fonts/Skia.ttf') format('truetype');
+  }
+
 :root {
     --black: #191919;
     --grey: #f4f4f4;
     --white: #fcfcfc;
     --blue: #2e80eb;
-    --font: "skia", Helvetica, Arial, sans-serif;
+    --font: "Skia";
     --size: 15px;
-    --container: 1400px;
+    --container: 1200px;
 }

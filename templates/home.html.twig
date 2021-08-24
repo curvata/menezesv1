@@ -1,4 +1,34 @@
 {% extends "base.html.twig" %}
 {% block body %}
-HOMEPAGE
+<main>
+    <section class="intro">
+        <div class="container">
+            <div class="hello">
+                <h1>Salut !  Moi  c'est  Mike <br>
+                Je suis développeur web</h1>
+            </div>
+        </div>
+        <div class="about">
+            <div class="container">
+                <div class="text_me">
+                    <h2>Un mot sur moi</h2>
+                    <p>Je suis un autodidacte et passionné par le web.<br>
+                    J’utilise au quotidien le html, css, sass, sql, php<br>
+                    et javascript vanilla. Je travail principalement <br>
+                    avec Symfony et Wordpress. J’utilise <br>
+                    également Photoshop et Illustrator pour mes <br>
+                    créations graphiques...<p>
+                </div>
+                <div class="presentation_picture">
+                    <img src="{{ asset('./images/menezes.jpg') }}" alt="Une photo de présentation de moi">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <section class="project">
+            <h2>Mes réalisations</h2>
+        </section>
+    </div>
+</main>
 {% endblock %}
