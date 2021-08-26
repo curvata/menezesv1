@@ -1,0 +1,32 @@
+footer {
+    background-color: var(--black);
+    padding: 1rem 0;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 30px;
+
+            &:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+        }
+    }
+
+    p {
+        color: white;
+
+        a {
+            color: white;
+            &:hover {
+                background-color: var(--grey);
+                color: var(--black);
+                transition: all 0.5s;
+            }
+        }
+    }
+}

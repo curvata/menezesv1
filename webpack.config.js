@@ -17,7 +17,7 @@ Encore
 
     .addPlugin(new CopyPlugin({
         patterns: [
-          { from: './assets/styles/fonts/Skia.ttf', to: 'fonts' }
+          { from: './assets/styles/fonts/skia.woff', to: 'fonts' }
         ],
       }))
 

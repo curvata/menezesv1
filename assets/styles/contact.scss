@@ -1,0 +1,108 @@
+#contact {
+    background-color: var(--grey);
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 5rem;
+
+    h2 {
+        padding-top: 3rem;
+    }
+
+    p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .content {
+        padding: 3rem 0;
+        display: flex;
+        justify-content: center;
+
+        p {
+            line-height: 2rem;
+        }
+        
+        .details {
+            padding: 1rem;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            text-align: end;
+            margin-right: 2rem;
+        }
+
+        .contact_form {
+            width: 50%;
+
+            div {
+                display: flex;
+                width: 100%;
+            }
+
+            .input {
+                display: flex;
+                flex-direction: column;
+            }
+
+            label {
+                text-align: left;
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            button {
+                display: block;
+                width: 100%;
+                border-radius: 2px;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: 600;
+                border: none;
+                color: white;
+                padding: 10px;
+                background-color: var(--black);
+                display: block;
+                margin: 1rem 0 1rem 0;
+
+
+                &:hover {
+                    transform: scale(1.01);
+                    cursor: pointer;
+
+
+                }
+            }
+            
+        }
+    }
+}
+
+.input + .input {
+    margin-left: 1rem;
+}
+
+input {
+    padding: 1rem;
+    line-height: 25px;
+    font-size: 1.2rem;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    border: 2px solid rgb(214, 214, 214);
+    background: rgb(233, 233, 233);
+    transition: border 0.5s ease;
+    margin-bottom: 1rem;
+
+    &:focus {
+        outline: none;
+        border-color: var(--blue);
+        background: rgb(243, 243, 243);
+    }
+}
+
+textarea {
+    border: 2px solid rgb(214, 214, 214);
+    background: rgb(233, 233, 233);
+    font-size: 1.5rem;
+    border-radius: 2px;
+
+}

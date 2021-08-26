@@ -18,21 +18,52 @@
                 </div>
                 <nav class="menu">
                     <ul>
-                        <li><a href="#realisations">Mes réalisations</a></li>
-                        <li><a href="#contact">Me contacter</a></li>
+                        <li><a class="menu_link" href="#project">Mes réalisations</a></li>
+                        <li><a class="menu_link" href="#contact">Me contacter</a></li>
                     </ul>
                 </nav>
         </header>
     </div>
     {% block body %}{% endblock %}
-    <section class="contact">
+    <section id="contact">
         <div class="container">
             <h2>Me contacter</h2>
+            <p>Vous pouvez me contacter via le formulaire, je me ferai un plaisir de vous répondre</p>
+            <div class="content">
+                <div class="details">
+                    <p>Cancelinha Menezes Mike</p>
+                    <p>Province du Luxembourg, Belgique</p>
+                    <p>+352 661 89 14 89<p>
+                    <a href="mailto:hello@menezes.be">hello@menezes.be</a>
+                </div>
+                <div class="contact_form">
+                    {{ form_start(form) }}
+                    <div>
+                    <div class="input">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="input">
+                        {{ form_label(form.mail) }}
+                        {{ form_widget(form.mail) }}
+                    </div>
+                    </div>
+                    <div class="input">
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message) }}
+                    </div>
+                    <button>Envoyer</button>
+                        {{ form_end(form) }}
+                </div>
+            </div>
         </div>
     </section>
     <footer>
         <div class="container">
-            <p>Développé par <a href="https://menezes.be">Menezes</a></p>
+            <div class="content">
+                <p>Développé par <a href="https://menezes.be">Menezes</a></p>
+                <a href="https://github.com/curvata"><img src="{{ asset('./images/github.png') }}" alt="logo github"></a>
+            </div>
         </div>
     </footer>
     </body>

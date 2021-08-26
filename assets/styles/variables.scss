@@ -1,14 +1,9 @@
-@font-face {
-    font-family: 'Skia';
-    src: url('./fonts/Skia.ttf') format('truetype');
-  }
-
 :root {
     --black: #191919;
     --grey: #f4f4f4;
     --white: #fcfcfc;
     --blue: #2e80eb;
-    --font: "Skia";
+    --font: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     --size: 15px;
     --container: 1200px;
 }
