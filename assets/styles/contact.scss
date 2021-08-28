@@ -100,9 +100,15 @@ input {
 }
 
 textarea {
+    padding: 1rem;
     border: 2px solid rgb(214, 214, 214);
     background: rgb(233, 233, 233);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border-radius: 2px;
 
+    &:focus {
+        outline: none;
+        border-color: var(--blue);
+        background: rgb(243, 243, 243);
+    }
 }

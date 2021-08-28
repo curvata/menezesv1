@@ -14,11 +14,11 @@
     <div class="container">
         <header class="top">
                 <div class="logo">
-                    <img src="{{ asset('./images/logo.jpg') }}" alt="logo Menezes">
+                    <a href="/"><img src="{{ asset('./images/logo.jpg') }}" alt="logo Menezes"></a>
                 </div>
                 <nav class="menu">
                     <ul>
-                        <li><a class="menu_link" href="#project">Mes réalisations</a></li>
+                        <li><a class="menu_link" href="{{ path('home') }}#projects">Mes réalisations</a></li>
                         <li><a class="menu_link" href="#contact">Me contacter</a></li>
                     </ul>
                 </nav>
@@ -37,23 +37,27 @@
                     <a href="mailto:hello@menezes.be">hello@menezes.be</a>
                 </div>
                 <div class="contact_form">
-                    {{ form_start(form) }}
+                     {% for message in app.flashes('success') %}
+                    <div class="alert_success">{{message}}</div>
+                    {% endfor %}
+                    {% for message in app.flashes('error') %}
+                        <div class="alert_danger">{{message}}</div>
+                    {% endfor %}
+                    <form action="{{ path('contact') }}" name="contact" method="POST">
                     <div>
                     <div class="input">
-                        {{ form_label(form.name) }}
-                        {{ form_widget(form.name) }}
+                        <input id="name" name="contact[name]" type="text" minlength="5" maxlength="30" placeholder="Votre nom" required>
                     </div>
                     <div class="input">
-                        {{ form_label(form.mail) }}
-                        {{ form_widget(form.mail) }}
+                        <input id="email" name="contact[email]" type="email" placeholder="Votre adresse e-mail" required>
                     </div>
                     </div>
                     <div class="input">
-                        {{ form_label(form.message) }}
-                        {{ form_widget(form.message) }}
+                        <textarea id="message" name="contact[message]" type="texte" minlength="50" maxlength="200" title="50 à 200 caractères" placeholder="Votre message" required></textarea>
                     </div>
-                    <button>Envoyer</button>
-                        {{ form_end(form) }}
+                    <input type="hidden" id="contact__token" name="contact[_token]" value="{{ csrf_token('contact') }}"/>
+                    <button type="submit">Envoyer</button>
+                    </form>
                 </div>
             </div>
         </div>

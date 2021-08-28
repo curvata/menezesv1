@@ -8,7 +8,7 @@ class Contact
 {
     #[assert\NotBlank(message: "Merci de renseigner un email")]
     #[assert\Email(message: "Merci de renseigner une adresse email valide")]
-    private string $mail;
+    private string $email;
 
     #[assert\NotBlank(message: "Merci de renseigner un nom")]
     #[assert\Length(
@@ -26,15 +26,15 @@ class Contact
         maxMessage: "Merci de renseigner un message de maximum {{ limit }} caractères")]
     private string $message;
 
-    public function setMail(string $mail): self
+    public function setEmail(string $mail): self
     {
-        $this->mail = $mail;
+        $this->email = $mail;
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->mail;
+        return $this->email;
     }
 
     public function setName(string $name): self

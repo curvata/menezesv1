@@ -16,10 +16,6 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home', methods: ['GET'])]    
     public function index(): Response
     {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
-
-
-        return $this->render('home.html.twig', ['form' => $form->createView()]);
+        return $this->render('home.html.twig');
     }
 }

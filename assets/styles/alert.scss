@@ -1,0 +1,20 @@
+.alert {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+    border-radius: 2px;
+    box-shadow: var(--shadow);
+    max-width: calc(100% - 2rem);
+  
+    &_danger {
+      @extend .alert;
+      background-color: #eb4d4b;
+    }
+    &_success {
+        @extend .alert;
+        background-color: #6ab04c;
+    }
+  }

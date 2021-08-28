@@ -51,7 +51,7 @@ class AdminProjectController extends AbstractController
     /**
      * Visualiser un projet
      */
-    #[Route('/{id}', name: 'admin..project.show', methods: ['GET'])]
+    #[Route('/{id}', name: 'admin.project.show', methods: ['GET'])]
     public function show(Project $project): Response
     {
         return $this->render('admin/project/show.html.twig', [
@@ -62,7 +62,7 @@ class AdminProjectController extends AbstractController
     /**
      * Editer un projet
      */
-    #[Route('/edit/{id}', name: 'project.edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'admin.project.edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Project $project): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
@@ -83,7 +83,7 @@ class AdminProjectController extends AbstractController
     /**
      * Supprimer un projet
      */
-    #[Route('/{id}', name: 'project.delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'admin.project.delete', methods: ['POST'])]
     public function delete(Request $request, Project $project): Response
     {
         if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
