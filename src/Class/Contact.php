@@ -21,7 +21,7 @@ class Contact
     #[assert\NotBlank(message: "Vous avez oublié d'écrire un message")]
     #[assert\Length(
         min: 20, 
-        max: 200, 
+        max: 500, 
         minMessage: "Merci de renseigner un message de minimum {{ limit }} caractères",
         maxMessage: "Merci de renseigner un message de maximum {{ limit }} caractères")]
     private string $message;

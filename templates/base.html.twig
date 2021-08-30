@@ -4,10 +4,10 @@
         <meta charset="UTF-8">
         <title>{% block title %}Portfolio Menezes{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
@@ -28,13 +28,25 @@
     <section id="contact">
         <div class="container">
             <h2>Me contacter</h2>
-            <p>Vous pouvez me contacter via le formulaire, je me ferai un plaisir de vous répondre</p>
+            <p class="subtitle">Vous pouvez me contacter via le formulaire, je me ferai un plaisir de vous répondre</p>
             <div class="content">
                 <div class="details">
-                    <p>Cancelinha Menezes Mike</p>
-                    <p>Province du Luxembourg, Belgique</p>
-                    <p>+352 661 89 14 89<p>
-                    <a href="mailto:hello@menezes.be">hello@menezes.be</a>
+                    <div class="item">
+                        <img src="{{ asset('./images/name.png') }}" alt="Icône identité">
+                        <p>Cancelinha Menezes Mike</p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('./images/address.png') }}" alt="Icône adresse">
+                        <p>Province du Luxembourg, Belgique</p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('./images/mail.png') }}" alt="Icône adresse e-mail">
+                        <a href="mailto:hello@menezes.be">hello@menezes.be</a>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('./images/phone.png') }}" alt="Icône téléphone portable">
+                        <p>+352 661 89 14 89<p>
+                    </div>
                 </div>
                 <div class="contact_form">
                      {% for message in app.flashes('success') %}

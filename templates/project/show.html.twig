@@ -1,4 +1,12 @@
 {% extends "./base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('gallery') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('gallery') }}
+{% endblock %}
 {% block body %}
 <main>
     <section class="project">
@@ -13,11 +21,25 @@
                 Il n’y a pas le nom de colonne, donc les fautes de frappe sont limitées. Par ailleurs, les colonnes peuvent être renommées sans avoir à changer la requête
                 L’ordre des colonnes doit resté identique sinon certaines valeurs prennent le risque d’être complétée dans la mauvaise colonne</p>
                 <div class="links">
-                <div class="link"><img src="{{ asset('./images/web.png') }}"><a href="{{ project.linkWeb }}">{{ project.linkWeb }}</a></div>
-                <div class="link"><img src="{{ asset('./images/github_black.png') }}"><a href="{{ project.linkGithub }}">{{ project.linkGithub }}</a></div>
+                    <div class="link">
+                        <img src="{{ asset('./images/web.png') }}">
+                        <a href="{{ project.linkWeb }}">{{ project.linkWeb }}</a>
+                    </div>
+                    <div class="link">
+                        <img src="{{ asset('./images/github_black.png') }}">
+                        <a href="{{ project.linkGithub }}">{{ project.linkGithub }}</a>
+                    </div>
+                </div>
             </div>
+            <div class="gallery">
+                <a href="{{ asset('./images/projets/menezes.png') }}" class="glightbox" data-gallery="gallery1">
+                    <img src="{{ asset('./images/projets/menezes.png') }}" alt="image" />
+                </a>
+                <a href="{{ asset('./images/projets/password.png') }}" class="glightbox" data-gallery="gallery1">
+                    <img src="{{ asset('./images/projets/menezes.png') }}" alt="image" />
+                </a>
             </div>
-        </div>
+	    </div>
     </section>
-
+</main>
 {% endblock %}

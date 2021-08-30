@@ -8,8 +8,7 @@
         padding-top: 3rem;
     }
 
-    p {
-        margin-top: 1rem;
+    p, a{
         font-size: 1.5rem;
     }
 
@@ -18,20 +17,28 @@
         display: flex;
         justify-content: center;
 
-        p {
-            line-height: 2rem;
-        }
-        
         .details {
             padding: 1rem;
             width: 50%;
             display: flex;
             flex-direction: column;
-            text-align: end;
-            margin-right: 2rem;
+            text-align: start;
+
+            .item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 1rem;
+                }
+            }
         }
 
         .contact_form {
+            padding: 1rem;
+
             width: 50%;
 
             div {

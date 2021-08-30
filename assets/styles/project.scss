@@ -5,11 +5,6 @@
     margin-top: 3rem;
     margin-bottom: 3rem;
 
-    p {
-        margin-top: 1rem;
-        font-size: 1.5rem;
-    }
-
     .content {
         display: flex;
         justify-content: space-between;
@@ -81,8 +76,7 @@
     }
 
     .description {
-        padding: 2rem;
-        background-color: var(--grey);
+        padding: 5rem;
         font-size: 1.5rem;
         text-align: justify;
 
@@ -101,6 +95,12 @@
                     margin-right: 1rem;
                 }
             }
+        }
+    }
+    .gallery {
+        img {
+            width: 250px;
+            padding: 1rem
         }
     }
 }

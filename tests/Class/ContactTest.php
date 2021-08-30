@@ -23,7 +23,7 @@ class ContactTest extends KernelTestCase
     {
         return (new Contact())
             ->setName($this->getString(5))
-            ->setMail("mail@mail.be")
+            ->setEmail("mail@mail.be")
             ->setMessage($this->getString(21));
     }
     public function testContactValid(): void
@@ -57,13 +57,13 @@ class ContactTest extends KernelTestCase
     public function testMailNotValid(): void
     {
         $contact = $this->getContact();
-        $contact->setMail("");
+        $contact->setEmail("");
         $errors = $this->valid($contact);
 
         $this->assertCount(1, $errors);
         $this->assertStringContainsString("Merci de renseigner un email", $errors[0]->getMessage());
 
-        $contact->setMail("ergerggerg");
+        $contact->setEmail("ergerggerg");
         $errors = $this->valid($contact);
 
         $this->assertCount(1, $errors);
@@ -86,10 +86,10 @@ class ContactTest extends KernelTestCase
         $this->assertCount(1, $errors);
         $this->assertStringContainsString("Merci de renseigner un message de minimum 20 caractères", $errors[0]->getMessage());
 
-        $contact->setMessage($this->getString(201));
+        $contact->setMessage($this->getString(501));
         $errors = $this->valid($contact);
 
         $this->assertCount(1, $errors);
-        $this->assertStringContainsString("Merci de renseigner un message de maximum 200 caractères", $errors[0]->getMessage());
+        $this->assertStringContainsString("Merci de renseigner un message de maximum 500 caractères", $errors[0]->getMessage());
     }
 }

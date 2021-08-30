@@ -7,10 +7,10 @@
         display: flex;
         justify-content: center;
         margin-right: 30%;
-
+        
         h1 {
-            display: inline-block;
-            text-align: justify;
+            display: flex;
+            flex-direction: column;
             padding: 1rem;
             background-color: rgba($color: rgb(136, 136, 136), $alpha: 0.5);
             font-size: 3rem;
@@ -28,13 +28,13 @@
 
             .description {
                 h2 {
-                    font-size: 3rem;
+                    font-size: 4rem;
                     margin-bottom: 2rem;
                     font-family: Mistral, sans-serif
                 }
             
                 width: 50%;
-                text-align: right;
+                text-align: justify;
                 padding: 2rem;
                 font-size: 1.5rem;
                 line-height: 2rem;
