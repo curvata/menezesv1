@@ -4,20 +4,24 @@
     font-size: 2rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
+    padding: 1rem;
 
     .content {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
+        align-items: center;
+        width: auto;
 
         .item {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 1.3rem;
+            margin-top: 4rem;
             width: 250px;
             height: 250px;
-            margin-top: 4rem;
 
             &:hover {
                 cursor: pointer;
@@ -76,13 +80,14 @@
     }
 
     .description {
-        padding: 5rem;
+        padding: 3rem;
         font-size: 1.5rem;
         text-align: justify;
 
         .links {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             margin-top: 1rem;
     
             .link {
@@ -98,6 +103,8 @@
         }
     }
     .gallery {
+        display: flex;
+        justify-content: center;
         img {
             width: 250px;
             padding: 1rem
