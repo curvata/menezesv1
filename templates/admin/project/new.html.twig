@@ -1,11 +1,8 @@
-{% extends '../admin.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
-{% block title %}New Project{% endblock %}
+{% block title %}Nouveau projet{% endblock %}
 
-{% block body %}
-    <h1>Create new Project</h1>
-
-    {{ include('project/_form.html.twig') }}
-
-    <a href="{{ path('admin.project.index') }}">back to list</a>
+{% block bodyAdmin %}
+    <h1>Créer un projet</h1>
+    {{ include('admin/project/_form.html.twig') }}
 {% endblock %}

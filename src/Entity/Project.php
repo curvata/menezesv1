@@ -31,7 +31,7 @@ class Project
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private DateTime $updatedAt;
+    private ?DateTime $updatedAt = null;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -93,6 +93,16 @@ class Project
         mimeTypesMessage: "Uniquement les formats jpeg et png sont acceptés"
     )]
     private File $headerImageFile;
+
+     /**
+     *
+     * @Assert\All({
+     * @Assert\Image (
+     * mimeTypes={"image/jpeg","image/png"},
+     * mimeTypesMessage="Seul les formats jpeg et png sont acceptés"
+     * )})
+     */
+    private ?array $pictureFiles;
 
     /**
      * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project")
@@ -253,6 +263,26 @@ class Project
     public function setSlug(string $slug): self
     {
         $this->slug = (new Slugify())->slugify($slug);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pictureFiles
+     */ 
+    public function getPictureFiles()
+    {
+        return $this->pictureFiles;
+    }
+
+    /**
+     * Set the value of pictureFiles
+     *
+     * @return  self
+     */ 
+    public function setPictureFiles($pictureFiles)
+    {
+        $this->pictureFiles = $pictureFiles;
 
         return $this;
     }

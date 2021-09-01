@@ -1,4 +1,8 @@
 {% extends "./base.html.twig" %}
 {% block body %}
-ADMINISTRATION
+<div class="container">
+{% block bodyAdmin %}
+<a href="{{ path('admin.project.index')}}">Index des projets</a>
+{% endblock %}
+</div>
 {% endblock %}

@@ -1,13 +1,8 @@
-{% extends '../admin.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
-{% block title %}Edit Project{% endblock %}
+{% block title %}Editer un projet{% endblock %}
 
-{% block body %}
-    <h1>Edit Project</h1>
-
-    {{ include('project/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('admin.project.index') }}">back to list</a>
-
-    {{ include('project/_delete_form.html.twig') }}
+{% block bodyAdmin %}
+    <h1>Editer un projet</h1>
+    {{ include('admin/project/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 {% endblock %}

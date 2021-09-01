@@ -1,4 +1,26 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="flex">
+    <div class="item">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="item">
+        {{ form_row(form.slug) }}
+    </div>
+</div>
+<div class="flex">
+    <div class="item">
+        {{ form_row(form.linkWeb) }}
+    </div>
+    <div class="item">
+        {{ form_row(form.linkGithub) }}
+    </div>
+</div>
+<div class="flex">
+    {{ form_rest(form) }}
+</div>
+    <div class="flex_between">
+        <a href="{{ path('admin.project.index') }}">Retour</a>
+        <button>{{ button_label|default('Créer') }}</button>
+    </div>
 {{ form_end(form) }}
+
