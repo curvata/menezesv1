@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PictureRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=PictureRepository::class)
@@ -19,11 +20,6 @@ class Picture
     private int $id;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private DateTime $createdAt;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private string $filename;
@@ -33,21 +29,11 @@ class Picture
      */
     private Project $project;
 
+    private ?File $pictureFile = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     public function getFilename(): ?string
@@ -72,5 +58,33 @@ class Picture
         $this->project = $project;
 
         return $this;
+    }
+
+    /**
+     * Get the value of pictureFile
+     */ 
+    public function getPictureFile()
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * Set the value of pictureFile
+     *
+     * @return  self
+     */ 
+    public function setPictureFile($pictureFile)
+    {
+        $this->pictureFile = $pictureFile;
+
+        return $this;
+    }
+
+     /**
+     * Retourne le nom pour l'image version thumbnail
+     */
+    public function getSmallPicture(): string
+    {
+        return 'small_'.$this->filename;
     }
 }

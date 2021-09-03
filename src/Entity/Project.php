@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Project
 {
@@ -86,13 +87,13 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $headerImage;
+    private ?string $headerImage = null;
 
     #[Assert\Image(
         mimeTypes: ["image/jpeg","image/png"],
         mimeTypesMessage: "Uniquement les formats jpeg et png sont acceptés"
     )]
-    private File $headerImageFile;
+    private ?File $headerImageFile = null;
 
      /**
      *
@@ -105,7 +106,7 @@ class Project
     private ?array $pictureFiles;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="project", cascade={"persist", "remove"})
      */
     private Collection $pictures;
 
@@ -120,7 +121,7 @@ class Project
         $this->pictures = new ArrayCollection();
     }
 
-    public function getHeaderImageFile(): File
+    public function getHeaderImageFile(): ?File
     {
         return $this->headerImageFile;
     }
@@ -145,10 +146,14 @@ class Project
     {
         return $this->createdAt;
     }
-
-    public function setCreatedAt(DateTime $createdAt): self
+    
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAt(): self
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = (new DateTime());
 
         return $this;
     }
@@ -282,8 +287,12 @@ class Project
      */ 
     public function setPictureFiles($pictureFiles)
     {
-        $this->pictureFiles = $pictureFiles;
-
+        foreach ($pictureFiles as $picturefile) {
+            $picture = new Picture();
+            $picture->setPictureFile($picturefile);
+            $this->addPicture($picture);
+        }
+        
         return $this;
     }
 }

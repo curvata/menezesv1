@@ -1,0 +1,70 @@
+.btn {
+    border-radius: 2px;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    background-color: var(--blue);
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+    }
+
+    &_delete {
+        @extend .btn;
+        background-color: var(--red);
+        &:hover {
+                background-color: var(--red-hover);
+        }
+    }
+
+    &_edit {
+        @extend .btn;
+        background-color: var(--orange);
+
+        &:hover {
+                background-color: var(--orange-hover);
+        }
+    }
+
+    &_save {
+        @extend .btn;
+        background-color:  var(--green);
+
+        &:hover {
+                background-color: var(--green-hover);
+        }
+    }
+
+    &_back {
+        @extend .btn;
+        background-color: var(--blue);
+        
+        &:hover {
+            background-color: var(--blue-hover);
+        }
+    }
+}
+
+.full {
+    width: 100%;
+}
+
+@media screen and (max-width: 1050px) {
+    .medium {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .btn {
+        font-size: 1.2rem;
+    }
+    .btn_edit + form {
+        margin-left: 0;
+    }
+}

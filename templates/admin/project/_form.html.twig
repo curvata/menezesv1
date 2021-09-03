@@ -1,26 +1,46 @@
 {{ form_start(form) }}
-<div class="flex">
-    <div class="item">
-        {{ form_row(form.title) }}
+    <div class="flex">
+        <div class="item">
+            {{ form_row(form.pictureFiles) }}
+        </div>
     </div>
-    <div class="item">
-        {{ form_row(form.slug) }}
+    <div class="flex">
+        <div class="item">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="item">
+            {{ form_row(form.slug) }}
+        </div>
     </div>
-</div>
-<div class="flex">
-    <div class="item">
-        {{ form_row(form.linkWeb) }}
+    <div class="flex">
+        <div class="item">
+            {{ form_row(form.linkWeb) }}
+        </div>
+        <div class="item">
+            {{ form_row(form.linkGithub) }}
+        </div>
     </div>
-    <div class="item">
-        {{ form_row(form.linkGithub) }}
+    <div class="flex">
+            <div class="left_zone">
+                {% if project.headerImage %}
+                    <div class="flex_end">
+                        <img width="250px" src="{{ asset('./images/projets/' ~ project.headerImage) }}"></img>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="right_zone flex_align_center">
+                {{ form_row(form.headerImageFile) }}
+            </div>
     </div>
-</div>
-<div class="flex">
-    {{ form_rest(form) }}
-</div>
+    <div class="flex_column">
+            {{ form_errors(form.description) }}
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+    </div>
     <div class="flex_between">
-        <a href="{{ path('admin.project.index') }}">Retour</a>
-        <button>{{ button_label|default('Créer') }}</button>
+        <a class="btn_back"href="{{ path('admin.project.index') }}">Retour</a>
+        <button class="btn_save"class="btn_save">{{ button_label|default('Créer') }}</button>
     </div>
+    {{ form_rest(form) }}
 {{ form_end(form) }}
 

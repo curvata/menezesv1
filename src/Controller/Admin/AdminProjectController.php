@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use DateTime;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +41,8 @@ class AdminProjectController extends AbstractController
             $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'La destination '. $project->getTitle() . ' a bien été créée');
+            return $this->redirectToRoute('admin.project.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/project/new.html.twig', [
@@ -69,9 +72,12 @@ class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $project->setUpdatedAt(new DateTime());
+
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'La destination '. $project->getTitle() . ' a bien été mise à jour');
+            return $this->redirectToRoute('admin.project.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/project/edit.html.twig', [
@@ -86,12 +92,35 @@ class AdminProjectController extends AbstractController
     #[Route('/{id}', name: 'admin.project.delete', methods: ['POST'])]
     public function delete(Request $request, Project $project): Response
     {
+        $path = 'images/projets/';
+
         if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($project);
-            $entityManager->flush();
+
+            try {
+                $entityManager->remove($project);
+                $entityManager->flush();
+            } catch (Exception $e) {
+                $this->addFlash('error', 'Impossible de supprimer la destination '. $project->getTitle() . ' car elle est liée à des vols de départs et de retours');
+                return $this->redirectToRoute('admin.project.index');
+            }
+
+            $this->addFlash('success', 'La destination '. $project->getTitle() . ' a bien été supprimée');
+
+            if ($project->getHeaderImage() != 'placeholder.png'
+                && file_exists($path.$project->getHeaderImage())
+            ) {
+                unlink($path.$project->getHeaderImage());
+            }
+            foreach ($project->getPictures() as $picture) {
+                if (file_exists($path.'small_'.$picture->getfilename())) {
+                    unlink($path.$picture->getfilename());
+                    unlink($path.'small_'.$picture->getfilename());
+                }
+            }
         }
 
-        return $this->redirectToRoute('admin/project_index', [], Response::HTTP_SEE_OTHER);
+
+        return $this->redirectToRoute('admin.project.index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -7,3 +7,4 @@ import './styles/project.scss';
 import './styles/contact.scss';
 import './styles/footer.scss';
 import './styles/alert.scss';
+import './styles/button.scss';

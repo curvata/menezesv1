@@ -32,43 +32,43 @@
             <div class="content">
                 <div class="details">
                     <div class="item">
-                        <img src="{{ asset('./images/name.png') }}" alt="Icône identité">
+                        <img src="{{ asset('./images/icones/name.png') }}" alt="Icône identité">
                         <p>Cancelinha Menezes Mike</p>
                     </div>
                     <div class="item">
-                        <img src="{{ asset('./images/address.png') }}" alt="Icône adresse">
+                        <img src="{{ asset('./images/icones/address.png') }}" alt="Icône adresse">
                         <p>Province du Luxembourg, Belgique</p>
                     </div>
                     <div class="item">
-                        <img src="{{ asset('./images/mail.png') }}" alt="Icône adresse e-mail">
+                        <img src="{{ asset('./images/icones/mail.png') }}" alt="Icône adresse e-mail">
                         <a href="mailto:hello@menezes.be">hello@menezes.be</a>
                     </div>
                     <div class="item">
-                        <img src="{{ asset('./images/phone.png') }}" alt="Icône téléphone portable">
+                        <img src="{{ asset('./images/icones/phone.png') }}" alt="Icône téléphone portable">
                         <p>+352 661 89 14 89<p>
                     </div>
                 </div>
                 <div class="contact_form">
-                     {% for message in app.flashes('success') %}
+                     {% for message in app.flashes('form_success') %}
                     <div class="alert_success">{{message}}</div>
                     {% endfor %}
-                    {% for message in app.flashes('error') %}
+                    {% for message in app.flashes('form_errors') %}
                         <div class="alert_danger">{{message}}</div>
                     {% endfor %}
                     <form action="{{ path('contact') }}" name="contact" method="POST">
-                    <div>
-                    <div class="input">
-                        <input id="name" name="contact[name]" type="text" minlength="5" maxlength="30" placeholder="Votre nom" required>
-                    </div>
-                    <div class="input">
-                        <input id="email" name="contact[email]" type="email" placeholder="Votre e-mail" required>
-                    </div>
-                    </div>
-                    <div class="input">
-                        <textarea id="message" name="contact[message]" type="texte" minlength="50" maxlength="200" title="50 à 200 caractères" placeholder="Votre message" required></textarea>
-                    </div>
-                    <input type="hidden" id="contact__token" name="contact[_token]" value="{{ csrf_token('contact') }}"/>
-                    <button type="submit">Envoyer</button>
+                        <div>
+                            <div class="input">
+                                <input id="name" name="contact[name]" type="text" minlength="5" maxlength="30" placeholder="Votre nom" required>
+                            </div>
+                            <div class="input">
+                                <input id="email" name="contact[email]" type="email" placeholder="Votre e-mail" required>
+                            </div>
+                        </div>
+                        <div class="input">
+                            <textarea id="message" name="contact[message]" type="texte" minlength="50" maxlength="200" title="50 à 200 caractères" placeholder="Votre message" required></textarea>
+                        </div>
+                        <input type="hidden" id="contact__token" name="contact[_token]" value="{{ csrf_token('contact') }}"/>
+                        <button type="submit">Envoyer</button>
                     </form>
                 </div>
             </div>
@@ -78,7 +78,7 @@
         <div class="container">
             <div class="content">
                 <p>Développé par <a href="https://menezes.be">Menezes</a></p>
-                <a href="https://github.com/curvata"><img src="{{ asset('./images/github.png') }}" alt="logo github"></a>
+                <a href="https://github.com/curvata"><img src="{{ asset('./images/icones/github.png') }}" alt="logo github"></a>
             </div>
         </div>
     </footer>

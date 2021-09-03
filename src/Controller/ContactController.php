@@ -24,10 +24,10 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->addFlash("success", "Message bien envoyé");
+            $this->addFlash("form_success", "Message bien envoyé");
 
         } else {
-            $this->addFlash("error", "Le formulaire comporte des erreurs !");
+            $this->addFlash("form_error", "Le formulaire comporte des erreurs !");
         }
 
         return $this->redirect($request->server->get('HTTP_REFERER')."#contact");

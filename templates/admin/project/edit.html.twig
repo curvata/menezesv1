@@ -1,8 +1,13 @@
 {% extends 'admin/admin.html.twig' %}
 
-{% block title %}Editer un projet{% endblock %}
-
+{% block title %}Editer - {{ project.title }}{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('pictureProjects') }}
+{% endblock %}
 {% block bodyAdmin %}
-    <h1>Editer un projet</h1>
+    <h1 class="title">Editer - {{ project.title }}</h1>
+    {% if project.pictures|length > 0 %}
+        <div class="flex pictures" data-project="{{ project.id }}"></div>
+    {% endif %}
     {{ include('admin/project/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 {% endblock %}
