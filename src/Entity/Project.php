@@ -178,6 +178,7 @@ class Project
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        $this->setSlug($title);
 
         return $this;
     }
@@ -265,9 +266,9 @@ class Project
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(string $title): self
     {
-        $this->slug = (new Slugify())->slugify($slug);
+        $this->slug = (new Slugify())->slugify($title);
 
         return $this;
     }

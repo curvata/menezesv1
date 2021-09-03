@@ -33,8 +33,7 @@ class ProjectType extends AbstractType
                 'required' => false,
                 'multiple' => true
                 ]
-            )
-            ->add('slug');
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
