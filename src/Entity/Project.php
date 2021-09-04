@@ -147,7 +147,6 @@ class Project
         return $this->createdAt;
     }
     
-    
     /**
      * @ORM\PrePersist
      */

@@ -52,7 +52,7 @@
                      {% for message in app.flashes('form_success') %}
                     <div class="alert_success">{{message}}</div>
                     {% endfor %}
-                    {% for message in app.flashes('form_errors') %}
+                    {% for message in app.flashes('form_error') %}
                         <div class="alert_danger">{{message}}</div>
                     {% endfor %}
                     <form action="{{ path('contact') }}" name="contact" method="POST">

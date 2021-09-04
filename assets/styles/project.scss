@@ -105,9 +105,6 @@
     .gallery {
         display: flex;
         justify-content: center;
-        img {
-            width: 250px;
-            padding: 1rem
-        }
+        flex-wrap: wrap;  
     }
 }

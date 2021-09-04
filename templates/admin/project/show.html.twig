@@ -41,7 +41,7 @@
          <tr>
             <th>Galerie d'images</th>
             <td>
-            {% for picture in project.pictures %}
+                {% for picture in project.pictures %}
                     <img width="100px" src="{{ asset('./images/projets/' ~ picture.smallPicture) }}"></img>
                 {% endfor %}
             </td>

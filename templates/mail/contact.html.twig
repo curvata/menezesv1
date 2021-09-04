@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <header style="padding: 15px; background-color: white; margin-bottom: 50px;">
+        <div style="display: flex; align-items: center;">
+            <img width="150px" src="{{ absolute_url(asset('./images/logo.jpg')) }}"></img>
+        </div>
+        </header>
+        <main>
+            <h3>Vous avez reçu un message depuis le formulaire de contact Menezes.be</h3>
+            <br>Nom: {{ name }} 
+            <br>E-mail: {{ mail }}
+            <br>Message: {{ message }}
+        </main>
+    </body>
+</html>

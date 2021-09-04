@@ -8,6 +8,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th></th>
                 <th>Titre</th>
                 <th>Slug</th>
                 <th>actions</th>
@@ -17,6 +18,7 @@
         {% for project in projects %}
             <tr>
                 <td>{{ project.id }}</td>
+                <td><img width="100px" src="{{ asset('./images/projets/' ~ project.headerImage) }}"></img></td>
                 <td>{{ project.title }}</td>
                 <td>{{ project.slug }}</td>
                 <td>
@@ -32,7 +34,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">Aucun projet</td>
+                <td colspan="5">Aucun projet</td>
             </tr>
         {% endfor %}
         </tbody>
