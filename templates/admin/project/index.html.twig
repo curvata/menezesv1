@@ -1,6 +1,9 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block title %}Project index{% endblock %}
+{% block description %}
+    <meta name="description" content="Liste des projets"/>
+{% endblock %}
 
 {% block bodyAdmin %}
     <h1 class="title">Index des projets</h1>
@@ -18,7 +21,7 @@
         {% for project in projects %}
             <tr>
                 <td>{{ project.id }}</td>
-                <td><img width="100px" src="{{ asset('./images/projets/' ~ project.headerImage) }}"></img></td>
+                <td><img width="100px" src="{{ asset('./images/projets/' ~ project.headerImage) }}" alt="Image d'en-tête"></img></td>
                 <td>{{ project.title }}</td>
                 <td>{{ project.slug }}</td>
                 <td>
@@ -39,6 +42,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn_save" href="{{ path('admin.project.new') }}">Créer un projet</a>
+    <div class="flex">
+        <a class="btn_save" href="{{ path('admin.project.new') }}">Créer un projet</a>
+    </div>
 {% endblock %}

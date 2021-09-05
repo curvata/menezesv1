@@ -18,7 +18,7 @@ class MyMailer
         $this->request = $request->getCurrentRequest();
         $this->mailer = $mailer;
     }
-    
+
     /**
      * Envoyer un mail
      */
@@ -39,7 +39,7 @@ class MyMailer
                 );
             $this->mailer->send($email);
         } catch (Exception $e) {
-            throw new Exception("Impossible d'envoyer l'e-mail (".$e.")");
+            throw new Exception("Impossible d'envoyer l'e-mail (" . $e . ")");
         }
     }
 }

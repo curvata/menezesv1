@@ -1,6 +1,7 @@
 footer {
     background-color: var(--black);
     padding: 1rem;
+    flex: 0 1 auto;
 
     .content {
         display: flex;
@@ -26,6 +27,9 @@ footer {
                 background-color: var(--grey);
                 color: var(--black);
                 transition: all 0.5s;
+            }
+            &:visited {
+                color: white;
             }
         }
     }

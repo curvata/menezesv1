@@ -1,8 +1,19 @@
+@font-face {
+    font-family: "proDisplay";
+    src: url("./fonts/sfdisplay.ttf");
+   }
+
+@font-face {
+ font-family: "mistral";
+ src: url("./fonts/mistral.ttf");
+}
+
 :root {
     --black: #191919;
     --grey: #f4f4f4;
     --white: #fcfcfc;
-    --font: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    --font-apple: "proDisplay","Helvetica Neue","Helvetica","Arial",sans-serif;
+    --font-mistral: "mistral","Helvetica Neue","Helvetica","Arial",sans-serif;
     --size: 15px;
     --container: 1200px;
     --red: #ee2436;

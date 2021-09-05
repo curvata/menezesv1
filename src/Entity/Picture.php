@@ -62,7 +62,7 @@ class Picture
 
     /**
      * Get the value of pictureFile
-     */ 
+     */
     public function getPictureFile()
     {
         return $this->pictureFile;
@@ -72,7 +72,7 @@ class Picture
      * Set the value of pictureFile
      *
      * @return  self
-     */ 
+     */
     public function setPictureFile($pictureFile)
     {
         $this->pictureFile = $pictureFile;
@@ -85,6 +85,6 @@ class Picture
      */
     public function getSmallPicture(): string
     {
-        return 'small_'.$this->filename;
+        return 'small_' . $this->filename;
     }
 }

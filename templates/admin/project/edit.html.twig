@@ -1,6 +1,10 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block title %}Editer - {{ project.title }}{% endblock %}
+{% block description %}
+    <meta name="description" content="Editer le projet {{ project.title }}"/>
+{% endblock %}
+
 {% block javascripts %}
     {{ encore_entry_script_tags('pictureProjects') }}
 {% endblock %}
@@ -9,5 +13,5 @@
     {% if project.pictures|length > 0 %}
         <div class="flex pictures" data-project="{{ project.id }}"></div>
     {% endif %}
-    {{ include('admin/project/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+    {{ include('admin/project/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 {% endblock %}

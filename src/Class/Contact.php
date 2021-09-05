@@ -12,18 +12,20 @@ class Contact
 
     #[assert\NotBlank(message: "Merci de renseigner un nom")]
     #[assert\Length(
-        min: 5, 
-        max: 30, 
+        min: 5,
+        max: 30,
         minMessage: "Merci de renseigner un nom de minimum {{ limit }} caractères",
-        maxMessage: "Merci de renseigner un nom de maximum {{ limit }} caractères")]
+        maxMessage: "Merci de renseigner un nom de maximum {{ limit }} caractères"
+    )]
     private string $name;
 
     #[assert\NotBlank(message: "Vous avez oublié d'écrire un message")]
     #[assert\Length(
-        min: 20, 
-        max: 500, 
+        min: 20,
+        max: 500,
         minMessage: "Merci de renseigner un message de minimum {{ limit }} caractères",
-        maxMessage: "Merci de renseigner un message de maximum {{ limit }} caractères")]
+        maxMessage: "Merci de renseigner un message de maximum {{ limit }} caractères"
+    )]
     private string $message;
 
     public function setEmail(string $mail): self
@@ -58,5 +60,4 @@ class Contact
     {
         return $this->message;
     }
-    
 }

@@ -41,7 +41,7 @@ class AdminProjectController extends AbstractController
             $entityManager->persist($project);
             $entityManager->flush();
 
-            $this->addFlash('success', 'La destination '. $project->getTitle() . ' a bien été créée');
+            $this->addFlash('success', 'La destination ' . $project->getTitle() . ' a bien été créée');
             return $this->redirectToRoute('admin.project.index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -76,7 +76,7 @@ class AdminProjectController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'La destination '. $project->getTitle() . ' a bien été mise à jour');
+            $this->addFlash('success', 'La destination ' . $project->getTitle() . ' a bien été mise à jour');
             return $this->redirectToRoute('admin.project.index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -94,28 +94,31 @@ class AdminProjectController extends AbstractController
     {
         $path = 'images/projets/';
 
-        if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $project->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
 
             try {
                 $entityManager->remove($project);
                 $entityManager->flush();
             } catch (Exception $e) {
-                $this->addFlash('error', 'Impossible de supprimer la destination '. $project->getTitle() . ' car elle est liée à des vols de départs et de retours');
+                $this->addFlash(
+                    'error',
+                    'Impossible de supprimer la destination ' .
+                    $project->getTitle() . ' car elle est liée à des vols de départs et de retours'
+                );
                 return $this->redirectToRoute('admin.project.index');
             }
 
-            $this->addFlash('success', 'La destination '. $project->getTitle() . ' a bien été supprimée');
+            $this->addFlash('success', 'La destination ' . $project->getTitle() . ' a bien été supprimée');
 
-            if ($project->getHeaderImage() != 'placeholder.png'
-                && file_exists($path.$project->getHeaderImage())
+            if ($project->getHeaderImage() != 'placeholder.png' && file_exists($path . $project->getHeaderImage())
             ) {
-                unlink($path.$project->getHeaderImage());
+                unlink($path . $project->getHeaderImage());
             }
             foreach ($project->getPictures() as $picture) {
-                if (file_exists($path.'small_'.$picture->getfilename())) {
-                    unlink($path.$picture->getfilename());
-                    unlink($path.'small_'.$picture->getfilename());
+                if (file_exists($path . 'small_' . $picture->getfilename())) {
+                    unlink($path . $picture->getfilename());
+                    unlink($path . 'small_' . $picture->getfilename());
                 }
             }
         }

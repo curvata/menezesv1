@@ -14,7 +14,7 @@ class HomeController extends AbstractController
     /**
      * Page d'accueil
      */
-    #[Route('/', name: 'home', methods: ['GET'])]    
+    #[Route('/', name: 'home', methods: ['GET'])]
     public function index(ProjectRepository $projectRepo): Response
     {
         return $this->render('home.html.twig', ['projects' => $projectRepo->findAll()]);

@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminPicturesController extends AbstractController
 {
     private EntityManagerInterface $manager;
-    
+
     public function __construct(EntityManagerInterface $manager)
     {
         $this->manager = $manager;
     }
-    
+
     /**
      * Retourne les miniatures du projet
      */
@@ -44,8 +44,8 @@ class AdminPicturesController extends AbstractController
     public function removePicture(Picture $Picture): JsonResponse
     {
         if ($Picture->getFilename()) {
-            unlink('images/projets/'.$Picture->getFilename());
-            unlink('images/projets/small_'.$Picture->getFilename());
+            unlink('images/projets/' . $Picture->getFilename());
+            unlink('images/projets/small_' . $Picture->getFilename());
             $this->manager->remove($Picture);
             $this->manager->flush();
         }

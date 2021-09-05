@@ -21,11 +21,11 @@
             <div class="left_zone">
                 {% if project.headerImage %}
                     <div class="flex_end">
-                        <img width="250px" src="{{ asset('./images/projets/' ~ project.headerImage) }}"></img>
+                        <img width="250px" src="{{ asset('./images/projets/' ~ project.headerImage) }}" alt="Image d'en-tête"></img>
                     </div>
                 {% endif %}
             </div>
-            <div class="right_zone flex_align_center">
+            <div class="right_zone flex_center flex_align_center">
                 {{ form_row(form.headerImageFile) }}
             </div>
     </div>

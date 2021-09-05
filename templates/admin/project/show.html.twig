@@ -1,55 +1,58 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block title %}Projet - {{ project.title }}{% endblock %}
+{% block description %}
+    <meta name="description" content="Détails du projet {{ project.title }}"/>
+{% endblock %}
 
 {% block bodyAdmin %}
-<h1 class="title">Projet - {{ project.title }}</h1>
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ project.id }}</td>
-        </tr>
-        <tr>
-            <th>Titre</th>
-            <td>{{ project.title }}</td>
-        </tr>
+    <h1 class="title">Projet - {{ project.title }}</h1>
+    <table class="table">
+        <tbody>
             <tr>
-                <th>Image d'en-tête</th>
-                <td><img width="100px" src="{{ asset('./images/projets/' ~ project.headerImage) }}"></img></td>
+                <th>Id</th>
+                <td>{{ project.id }}</td>
             </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ project.description }}</td>
-        </tr>
-        <tr>
-            <th>LinkWeb</th>
-            <td>{{ project.linkWeb }}</td>
-        </tr>
-        <tr>
-            <th>LinkGithub</th>
-            <td>{{ project.linkGithub }}</td>
-        </tr>
-        <tr>
-            <th>HeaderImage</th>
-            <td>{{ project.headerImage }}</td>
-        </tr>
-        <tr>
-            <th>Slug</th>
-            <td>{{ project.slug }}</td>
-        </tr>
-         <tr>
-            <th>Galerie d'images</th>
-            <td>
-                {% for picture in project.pictures %}
-                    <img width="100px" src="{{ asset('./images/projets/' ~ picture.smallPicture) }}"></img>
-                {% endfor %}
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div class="flex_between">
-    <a class="btn_back" href="{{ path('admin.project.index') }}">Retour</a>
-    {{ include('admin/project/_delete_form.html.twig') }}
-</div>
+            <tr>
+                <th>Titre</th>
+                <td>{{ project.title }}</td>
+            </tr>
+                <tr>
+                    <th>Image d'en-tête</th>
+                    <td><img width="100px" src="{{ asset('./images/projets/' ~ project.headerImage) }}" alt="Image d'en-tête"></img></td>
+                </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ project.description }}</td>
+            </tr>
+            <tr>
+                <th>LinkWeb</th>
+                <td>{{ project.linkWeb }}</td>
+            </tr>
+            <tr>
+                <th>LinkGithub</th>
+                <td>{{ project.linkGithub }}</td>
+            </tr>
+            <tr>
+                <th>HeaderImage</th>
+                <td>{{ project.headerImage }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ project.slug }}</td>
+            </tr>
+            <tr>
+                <th>Galerie d'images</th>
+                <td>
+                    {% for picture in project.pictures %}
+                        <img width="100px" src="{{ asset('./images/projets/' ~ picture.smallPicture) }}" alt='{{ picture.fileName }}'></img>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="flex_between">
+        <a class="btn_back" href="{{ path('admin.project.index') }}">Retour</a>
+        {{ include('admin/project/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

@@ -13,7 +13,7 @@ use Intervention\Image\ImageManager;
 class PicturesUploadsSubscriber implements EventSubscriber
 {
     const UPLOAD_PATH_PROPERTIES = 'images/projets/';
-    
+
     public function getSubscribedEvents(): array
     {
         return [
@@ -21,17 +21,17 @@ class PicturesUploadsSubscriber implements EventSubscriber
             Events::preUpdate
         ];
     }
-    
+
     public function prePersist(LifecycleEventArgs $args): void
     {
         $this->uploadsPictures($args);
     }
-    
+
     public function preUpdate(LifecycleEventArgs $args): void
     {
         $this->uploadsPictures($args);
     }
-    
+
     /**
      * Téléchargement des images pour la galerie et l'en-tête
      */
@@ -68,10 +68,10 @@ class PicturesUploadsSubscriber implements EventSubscriber
                 }
 
                 $name = $this->generateNewImageName($uploadPicture->getClientOriginalName());
-                $entity->setHeaderImage('small_'.$name);
+                $entity->setHeaderImage('small_' . $name);
                 $uploadPicture->move(self::UPLOAD_PATH_PROPERTIES, $name);
                 $this->generateThumbmail($name);
-                unlink(self::UPLOAD_PATH_PROPERTIES.$name);
+                unlink(self::UPLOAD_PATH_PROPERTIES . $name);
             } else {
                 if ($entity->getHeaderImage() === null) {
                     $entity->setHeaderImage('placeholder.png');
@@ -79,20 +79,20 @@ class PicturesUploadsSubscriber implements EventSubscriber
             }
         }
     }
-        
+
     public function generateNewImageName(string $name): string
     {
         $originalName = substr($name, 0, strpos($name, '.'));
         $extension = substr($name, strpos($name, '.'));
-        return uniqid($originalName).$extension;
+        return uniqid($originalName) . $extension;
     }
-    
+
     public function generateThumbmail(string $fileName): void
     {
         $manager = new ImageManager(array('driver' => 'Gd'));
-        $image = $manager->make(self::UPLOAD_PATH_PROPERTIES.$fileName)->resize(500, null, function ($constraint) {
+        $image = $manager->make(self::UPLOAD_PATH_PROPERTIES . $fileName)->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
         });
-        $image->save(self::UPLOAD_PATH_PROPERTIES.'small_'.$fileName);
+        $image->save(self::UPLOAD_PATH_PROPERTIES . 'small_' . $fileName);
     }
 }

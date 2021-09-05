@@ -39,10 +39,11 @@ class Project
      */
     #[assert\NotBlank(message: "Merci de renseigner un titre")]
     #[assert\Length(
-        min: 4, 
-        max: 50, 
+        min: 4,
+        max: 50,
         minMessage: "Merci de renseigner un titre de minimum {{ limit }} caractères",
-        maxMessage: "Merci de renseigner un titre de maximum {{ limit }} caractères")]
+        maxMessage: "Merci de renseigner un titre de maximum {{ limit }} caractères"
+    )]
     private string $title;
 
     /**
@@ -50,10 +51,11 @@ class Project
      */
     #[assert\NotBlank(message: "Merci de renseigner une description")]
     #[assert\Length(
-        min: 20, 
-        max: 500, 
+        min: 20,
+        max: 500,
         minMessage: "Merci de renseigner une description de minimum {{ limit }} caractères",
-        maxMessage: "Merci de renseigner une description de maximum {{ limit }} caractères")]
+        maxMessage: "Merci de renseigner une description de maximum {{ limit }} caractères"
+    )]
     private string $description;
 
     /**
@@ -61,13 +63,15 @@ class Project
      */
     #[assert\NotBlank(message: "Merci de renseigner une adresse web")]
     #[Assert\Regex(
-        '#^https:[/]{2}[a-zA-Z0-9\-\s]+.menezes.be$#', 
-        message: "Merci de renseigner une adresse web de type 'https://*.menezes.be'")]
+        '#^[a-zA-Z0-9\-\s]+.menezes.be$#',
+        message: "Merci de renseigner une adresse web de type '*.menezes.be'"
+    )]
     #[assert\Length(
-        min: 22, 
-        max: 80, 
+        min: 10,
+        max: 80,
         minMessage: "Merci de renseigner une adresse web de minimum {{ limit }} caractères",
-        maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères")]
+        maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères"
+    )]
     private string $linkWeb;
 
     /**
@@ -75,13 +79,15 @@ class Project
      */
     #[assert\NotBlank(message: "Merci de renseigner une adresse web")]
     #[Assert\Regex(
-        '#^https:[/]{2}github.com[/]{1}curvata[/]{1}[a-zA-Z0-9\-\s]+$#', 
-        message: "Merci de renseigner une adresse web de type 'https://github.com/curvata/*'")]
+        '#^curvata[/]{1}[a-zA-Z0-9\-\s]+$#',
+        message: "Merci de renseigner une adresse web de type 'curvata/*'"
+    )]
     #[assert\Length(
-        min: 22, 
-        max: 100, 
+        min: 10,
+        max: 100,
         minMessage: "Merci de renseigner une adresse web de minimum {{ limit }} caractères",
-        maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères")]
+        maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères"
+    )]
     private string $linkGithub;
 
     /**
@@ -146,7 +152,7 @@ class Project
     {
         return $this->createdAt;
     }
-    
+
     /**
      * @ORM\PrePersist
      */
@@ -274,7 +280,7 @@ class Project
 
     /**
      * Get the value of pictureFiles
-     */ 
+     */
     public function getPictureFiles()
     {
         return $this->pictureFiles;
@@ -284,7 +290,7 @@ class Project
      * Set the value of pictureFiles
      *
      * @return  self
-     */ 
+     */
     public function setPictureFiles($pictureFiles)
     {
         foreach ($pictureFiles as $picturefile) {
@@ -292,7 +298,7 @@ class Project
             $picture->setPictureFile($picturefile);
             $this->addPicture($picture);
         }
-        
+
         return $this;
     }
 }
