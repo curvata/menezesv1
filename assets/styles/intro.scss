@@ -6,12 +6,13 @@
         color: white;
         display: flex;
         justify-content: center;
-        margin-right: 20%;
+        margin-right: 15%;
         
         h1 {
             display: flex;
             flex-direction: column;
             padding: 1rem;
+            margin: 1rem;
             background-color: rgba($color: rgb(136, 136, 136), $alpha: 0.5);
             font-size: 3rem;
             z-index: 11;
@@ -48,7 +49,7 @@
                     position: absolute;
                     right: 15%;
                     bottom: -2px;
-                    max-width: 400px;
+                    width: 400px;
 
                     &::after {
                         content: "";
@@ -125,20 +126,24 @@
             margin: 0;
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
         }
         .about {
-            margin-top: 5rem;
+            margin-top: 8rem;
 
             .content {
                 display: flex;
                 flex-direction: column;
                 .description {
+                    order: 2;
                     h2 {
                         text-align: center;
                     }
-                    min-width: calc(100% - 4rem);
+                    margin-top: 0;
+
+                    padding: 1rem 1rem;
+                    min-width: calc(100% - 2rem);
                     font: 1.5rem;
                 }
                 .presentation_picture {
@@ -147,9 +152,10 @@
                     justify-content: center;
                     align-items: center;
                     div {
+                        order: 1;
                         position: relative;
+                        top: -50px;
                         right: 0;  
-                        margin-top: 2rem;
                     }
                 }
             }
@@ -157,16 +163,20 @@
     }          
 }
 
-@media screen and (max-width: 800px) { 
+@media screen and (max-width: 600px) { 
     .intro {
+        margin-top: 1rem;
         .hello {
             h1 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
         }
         .about {
+            margin-top: 5rem;
+
             .content {
                 .description {
+                    margin-top: 0;
                     h2 {
                         font-size: 3rem;
                     }
