@@ -11,6 +11,9 @@ body {
 }
 
 a {
+    color: black;
+    text-decoration: none;
+
     &:hover {
         color: var(--blue);
     }

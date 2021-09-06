@@ -23,14 +23,18 @@
             <section class="description">
                 <p>{{ project.description }}</p>
                 <div class="links">
-                    <div class="link">
-                        <img src="{{ asset('./images/icones/web.png') }}" alt="Icône adresse web">
-                        <a href="https://{{ project.linkWeb }}">{{ project.linkWeb }}</a>
-                    </div>
-                    <div class="link">
-                        <img src="{{ asset('./images/icones/github_black.png') }}" alt="Icône github">
-                        <a href="https://github.com/{{ project.linkGithub }}">{{ project.linkGithub }}</a>
-                    </div>
+                    {% if project.linkWeb != null %}
+                        <div class="link">
+                            <img src="{{ asset('./images/icones/web.png') }}" alt="Icône adresse web">
+                            <a href="https://{{ project.linkWeb }}">{{ project.linkWeb }}</a>
+                        </div>
+                    {% endif %}
+                    {% if project.linkGithub != null %}
+                        <div class="link">
+                            <img src="{{ asset('./images/icones/github_black.png') }}" alt="Icône github">
+                            <a href="https://github.com/{{ project.linkGithub }}">{{ project.linkGithub }}</a>
+                        </div>
+                    {% endif %}
                 </div>
             </section>
             <section class="gallery">

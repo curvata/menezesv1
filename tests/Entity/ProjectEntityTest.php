@@ -78,14 +78,11 @@ class ProjectEntityTest extends KernelTestCase
         $project = $this->getProject();
 
         $project->setLinkWeb("");
-        $this->assertCount(2, $this->valid($project));
-        $this->assertStringContainsString(
-            "Merci de renseigner une adresse web",
-            $this->valid($project)[0]->getMessage()
-        );
+        $this->assertCount(1, $this->valid($project));
+
         $this->assertStringContainsString(
             "Merci de renseigner une adresse web de minimum 10 caractères",
-            $this->valid($project)[1]->getMessage()
+            $this->valid($project)[0]->getMessage()
         );
 
         $project->setLinkWeb($this->getString(80) . ".menezes.be");
@@ -108,14 +105,10 @@ class ProjectEntityTest extends KernelTestCase
         $project = $this->getProject();
 
         $project->setLinkGithub("");
-        $this->assertCount(2, $this->valid($project));
-        $this->assertStringContainsString(
-            "Merci de renseigner une adresse web",
-            $this->valid($project)[0]->getMessage()
-        );
+        $this->assertCount(1, $this->valid($project));
         $this->assertStringContainsString(
             "Merci de renseigner une adresse web de minimum 10 caractères",
-            $this->valid($project)[1]->getMessage()
+            $this->valid($project)[0]->getMessage()
         );
 
         $project->setLinkGithub("curvata/" . $this->getString(100));

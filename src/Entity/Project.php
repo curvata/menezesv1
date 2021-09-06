@@ -61,7 +61,6 @@ class Project
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[assert\NotBlank(message: "Merci de renseigner une adresse web")]
     #[Assert\Regex(
         '#^[a-zA-Z0-9\-\s]+.menezes.be$#',
         message: "Merci de renseigner une adresse web de type '*.menezes.be'"
@@ -72,12 +71,11 @@ class Project
         minMessage: "Merci de renseigner une adresse web de minimum {{ limit }} caractères",
         maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères"
     )]
-    private string $linkWeb;
+    private ?string $linkWeb;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[assert\NotBlank(message: "Merci de renseigner une adresse web")]
     #[Assert\Regex(
         '#^curvata[/]{1}[a-zA-Z0-9\-\s]+$#',
         message: "Merci de renseigner une adresse web de type 'curvata/*'"
@@ -88,7 +86,7 @@ class Project
         minMessage: "Merci de renseigner une adresse web de minimum {{ limit }} caractères",
         maxMessage: "Merci de renseigner une adresse web de maximum {{ limit }} caractères"
     )]
-    private string $linkGithub;
+    private ?string $linkGithub;
 
     /**
      * @ORM\Column(type="string", length=255)

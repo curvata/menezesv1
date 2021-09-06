@@ -154,8 +154,11 @@
                     div {
                         order: 1;
                         position: relative;
-                        top: -50px;
-                        right: 0;  
+                        right: 0;
+                        padding: 2rem 0; 
+                        &::after {
+                            display: none;
+                        }
                     }
                 }
             }
@@ -166,13 +169,20 @@
 @media screen and (max-width: 600px) { 
     .intro {
         margin-top: 1rem;
+        .container_intro {
+            height: calc(50vh - 100px - 3rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .hello {
+            align-items: center;
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.7rem;
             }
         }
         .about {
-            margin-top: 5rem;
+            margin-top: 2rem;
 
             .content {
                 .description {
@@ -184,10 +194,6 @@
                 .presentation_picture {
                     div {
                         margin: 0 1rem;
-
-                        &::after {
-                            display: none;
-                        }
                     }
                 }
             }
