@@ -70,3 +70,19 @@
         }       
     }  
 }
+
+@media screen and (max-width: 600px) { 
+    .project {
+        .gallery {
+            .item {
+                width: 100%;
+            }
+        }
+        .description {
+            margin: 2rem 1rem;
+            padding: 1rem 0rem;
+            font-size: 1.5rem;
+            text-align: justify;
+        }
+    }
+}

@@ -121,7 +121,7 @@
 
 @media screen and (max-width: 980px) { 
     .intro {
-        margin-top: 3rem;
+        margin-top: 0;
         .hello {
             margin: 0;
 
@@ -130,7 +130,7 @@
             }
         }
         .about {
-            margin-top: 8rem;
+            margin-top: 0;
 
             .content {
                 display: flex;
@@ -166,23 +166,21 @@
     }          
 }
 
+
 @media screen and (max-width: 600px) { 
     .intro {
-        margin-top: 1rem;
-        .container_intro {
-            height: calc(50vh - 100px - 3rem);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         .hello {
-            align-items: center;
-            h1 {
-                font-size: 1.7rem;
+            h1 {     
+                padding-top: 2rem;   
+                padding-bottom: 2rem;   
+                margin-right: -80px;
+                width: 100%;
+                font-size: 1.8rem;
+                background-color: rgba($color: rgb(136, 136, 136), $alpha: 0.9);
             }
         }
         .about {
-            margin-top: 2rem;
+            margin-top: -6rem;
 
             .content {
                 .description {
@@ -200,6 +198,8 @@
         }
     }
 }
+
+
 
 
 
