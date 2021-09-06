@@ -92,7 +92,7 @@ class ProjectEntityTest extends KernelTestCase
             $this->valid($project)[0]->getMessage()
         );
 
-        $project->setLinkWeb("monproject.monsite.be");
+        $project->setLinkWeb("monproject.monsite.bu");
         $this->assertCount(1, $this->valid($project));
         $this->assertStringContainsString(
             "Merci de renseigner une adresse web de type '*.menezes.be'",

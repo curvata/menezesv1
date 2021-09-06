@@ -62,7 +62,7 @@ class Project
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     #[Assert\Regex(
-        '#^[a-zA-Z0-9\-\s]+.menezes.be$#',
+        '#^[a-zA-Z0-9\.\-\s]+.be$#',
         message: "Merci de renseigner une adresse web de type '*.menezes.be'"
     )]
     #[assert\Length(
