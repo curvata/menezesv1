@@ -16,13 +16,13 @@
     <article class="project">
         <section class="headband">
             <div class="container">
-                <h1>{{ project.title }}</h1>
+                <h1 class="hb t05">{{ project.title }}</h1>
             </div>
         </section>
         <div class="container">
-            <section class="description">
+            <section class="description hb t05">
                 <p>{{ project.description }}</p>
-                <div class="links">
+                <div class="links hb t08">
                     {% if project.linkWeb != null %}
                         <div class="link">
                             <img src="{{ asset('./images/icones/web.png') }}" alt="Icône adresse web">
@@ -37,9 +37,9 @@
                     {% endif %}
                 </div>
             </section>
-            <section class="gallery">
+            <section class="gallery hb t10">
                 {% for picture in project.pictures %}
-                    <div class="item">
+                    <div class="item hb t10">
                         <a href="{{ asset('./images/projets/' ~ picture.fileName) }}" class="glightbox" data-gallery="gallery1">
                             <img src="{{ asset('./images/projets/' ~ picture.smallPicture) }}" alt="{{ project.title }}"  />
                         </a>

@@ -122,11 +122,17 @@
 @media screen and (max-width: 980px) { 
     .intro {
         margin-top: 0;
+        .container_intro {
+            height: calc(50vh - 99px - 2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .hello {
             margin: 0;
 
             h1 {
-                font-size: 3rem;
+                font-size: 4rem;
             }
         }
         .about {
@@ -140,8 +146,7 @@
                     h2 {
                         text-align: center;
                     }
-                    margin-top: 0;
-
+                    margin-top: 2rem;
                     padding: 1rem 1rem;
                     min-width: calc(100% - 2rem);
                     font: 1.5rem;
@@ -151,11 +156,12 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    margin-top: 2rem;
+
                     div {
                         order: 1;
                         position: relative;
                         right: 0;
-                        padding: 2rem 0; 
                         &::after {
                             display: none;
                         }
@@ -170,37 +176,23 @@
 @media screen and (max-width: 600px) { 
     .intro {
         .hello {
-            h1 {     
-                padding-top: 2rem;   
-                padding-bottom: 2rem;   
-                margin-right: -80px;
-                width: 100%;
-                font-size: 1.8rem;
-                background-color: rgba($color: rgb(136, 136, 136), $alpha: 0.9);
+            h1 {       
+                font-size: 1.7rem;
             }
         }
         .about {
-            margin-top: -6rem;
-
             .content {
                 .description {
-                    margin-top: 0;
                     h2 {
                         font-size: 3rem;
                     }
                 }
                 .presentation_picture {
                     div {
-                        margin: 0 1rem;
+                        margin: 0 1rem 2rem 1rem;
                     }
                 }
             }
         }
     }
 }
-
-
-
-
-
-

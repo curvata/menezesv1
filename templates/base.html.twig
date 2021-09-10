@@ -13,12 +13,13 @@
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('animation') }}
         {% endblock %}
     </head>
     <body>
         <header>
             <div class="container">
-                <div class="top">
+                <div class="top t15">
                     <div class="logo">
                         <a href="/"><img src="{{ asset('./images/logo.jpg') }}" alt="logo Menezes"></a>
                     </div>
@@ -38,10 +39,10 @@
         {% block body %}{% endblock %}
         <section id="contact">
             <div class="container">
-                <h2 class="title">Me contacter</h2>
-                <p class="subtitle">N'hésitez pas à me contacter</p>
+                <h2 class="title hb t05">Me contacter</h2>
+                <p class="subtitle hb t10">N'hésitez pas à me contacter</p>
                 <div class="content">
-                    <address class="details">
+                    <address class="details hl t05">
                         <div class="item">
                             <img src="{{ asset('./images/icones/name.png') }}" alt="Icône id">
                             <p>Cancelinha Menezes Mike</p>
@@ -59,7 +60,7 @@
                             <p>+352 661 89 14 89<p>
                         </div>
                     </address>
-                    <div class="contact_form">
+                    <div class="contact_form hr t05">
                         {% for message in app.flashes('form_success') %}
                             <div class="alert_success">{{message}}</div>
                         {% endfor %}

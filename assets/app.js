@@ -12,3 +12,4 @@ import './styles/form.scss';
 import './styles/admin.scss';
 import './styles/home.scss';
 import './styles/display.scss';
+import './styles/animation.scss';
